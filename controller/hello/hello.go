@@ -1,37 +1,37 @@
 package hello
 
 import (
-	"time"
 	"fmt"
 	"strconv"
+	"time"
 
 	"github.com/gin-gonic/gin"
 )
 
 type News struct {
-	Id              string `json:"id"`
-	Title           string `json:"title"`
-	Content         string `json:"content"`
-	Author          string `json:"author"`
-	CreateAt        time.Time `json:"createAt"`
-	UpdateAt        time.Time `json:"updateAt"`
+	Id       string    `json:"id"`
+	Title    string    `json:"title"`
+	Content  string    `json:"content"`
+	Author   string    `json:"author"`
+	CreateAt time.Time `json:"createAt"`
+	UpdateAt time.Time `json:"updateAt"`
 }
 
 var now = time.Now()
-var news = [...] News {
+var news = [...]News{
 	{
-		Id: "0",
-		Title: "Go lang study plan",
-		Content: "Good Good Study, Day Day Up!!",
-		Author: "Vinli Cheung",
+		Id:       "0",
+		Title:    "Go lang study plan",
+		Content:  "Good Good Study, Day Day Up!!",
+		Author:   "Vinli Cheung",
 		CreateAt: now,
 		UpdateAt: now,
 	},
 	{
-		Id: "1",
-		Title: "Gin framwork",
-		Content: "It is very easy to learn!",
-		Author: "Vinli Cheung",
+		Id:       "1",
+		Title:    "Gin framwork",
+		Content:  "It is very easy to learn!",
+		Author:   "Vinli Cheung",
 		CreateAt: now,
 		UpdateAt: now,
 	},
@@ -39,12 +39,12 @@ var news = [...] News {
 
 func Get(c *gin.Context) {
 	id, err := strconv.Atoi(c.Params.ByName("id"))
-	if ( err != nil) {
+	if err != nil {
 		fmt.Println(err)
 	}
 	c.JSON(200, gin.H{
-		"data": news[id],
-		"code": 200,
+		"data":       news[id],
+		"code":       200,
 		"serverTime": now,
 	})
 }

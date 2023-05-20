@@ -5,14 +5,24 @@ import (
 )
 
 var rootQuery = graphql.NewObject(graphql.ObjectConfig{
-	Name: "RootQuery",
+	Name:        "RootQuery",
 	Description: "Root Query",
 	Fields: graphql.Fields{
-		"hello": &queryHello,
+		"hello":     &queryHello,
+		"user":      &userHello,
+		"workspace": &workspaceHello,
+	},
+})
+
+var rootMutation = graphql.NewObject(graphql.ObjectConfig{
+	Name:        "RootMutation",
+	Description: "Root Mutation",
+	Fields: graphql.Fields{
+		"updateUser": &userMutation,
 	},
 })
 
 var Schema, _ = graphql.NewSchema(graphql.SchemaConfig{
-	Query:    rootQuery,
-	Mutation: nil,
+	Query: rootQuery,
+	// Mutation: rootMutation,
 })

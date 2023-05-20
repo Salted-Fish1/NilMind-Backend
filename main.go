@@ -2,10 +2,10 @@ package main
 
 import "golesson/route"
 
-func main () {
+func main() {
 	r := router.Router
 
 	router.SetRouter()
 
-	r.Run(":1234")
+	r.Run(":8080")
 }
